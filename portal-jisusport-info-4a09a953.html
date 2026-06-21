@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>极速体育 · 信息索引与资料整理</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f7f8fa;
+            color: #1e2229;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 / hero 区 */
+        .hero {
+            background: #0d121c;
+            color: #eef0f3;
+            padding: 3.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #3b82f6, #6ee7b7, #3b82f6);
+        }
+
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero .sub {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.05rem;
+            color: #b0b9c8;
+        }
+
+        /* 顶部导航 */
+        .nav-bar {
+            background: #0d121c;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #2a3140;
+        }
+
+        .nav-bar a {
+            color: #cfd7e6;
+            text-decoration: none;
+            font-size: 0.95rem;
+            padding: 0.3rem 0;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .nav-bar a:hover {
+            color: #ffffff;
+            border-bottom-color: #3b82f6;
+        }
+
+        /* 强调色链接 */
+        a {
+            color: #2563eb;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            transition: color 0.15s;
+        }
+
+        a:hover {
+            color: #1e40af;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1040px;
+            margin: 0 auto;
+            padding: 2.2rem 1.5rem 3.5rem;
+        }
+
+        .intro {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            margin-bottom: 2.5rem;
+        }
+
+        .intro p {
+            margin-bottom: 1rem;
+        }
+
+        .intro p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 三个场景模块 — 卡片式 */
+        .scenes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.8rem 0 2.5rem;
+        }
+
+        .scene-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem 1.5rem 1.8rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+            border: 1px solid #eef0f4;
+            transition: box-shadow 0.2s;
+        }
+
+        .scene-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+
+        .scene-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.75rem;
+        }
+
+        .scene-card p {
+            font-size: 0.95rem;
+            color: #2c313c;
+            margin-bottom: 0.4rem;
+        }
+
+        .scene-card .tag {
+            display: inline-block;
+            background: #eef4ff;
+            color: #1e4a8a;
+            font-size: 0.8rem;
+            padding: 0.2rem 0.7rem;
+            border-radius: 30px;
+            margin-top: 0.6rem;
+        }
+
+        /* 常见说明 / 类似 FAQ 摘要 */
+        .faq-section {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 2rem 2.2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            margin-top: 1.8rem;
+        }
+
+        .faq-section h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .faq-item {
+            padding: 0.9rem 0;
+            border-bottom: 1px solid #eaedf2;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item .q {
+            font-weight: 600;
+            color: #0b1a33;
+            display: block;
+            margin-bottom: 0.2rem;
+        }
+
+        .faq-item .a {
+            color: #3b4455;
+            font-size: 0.95rem;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: #5d667a;
+            text-align: center;
+        }
+
+        .footnote a {
+            color: #2563eb;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #dee2ea;
+            margin: 1.6rem 0;
+        }
+
+        @media (max-width: 780px) {
+            .hero h1 { font-size: 1.9rem; }
+            .hero .sub { font-size: 0.95rem; }
+            .scenes { grid-template-columns: 1fr; gap: 1.3rem; }
+            .intro, .faq-section { padding: 1.5rem 1.2rem; }
+            .nav-bar { gap: 1rem; padding: 0.8rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-bar">
+        <a href="#home">首页</a>
+        <a href="#scenes">使用场景</a>
+        <a href="#faq">常见说明</a>
+        <a href="#info">资料整理</a>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>极速体育 · 信息索引</h1>
+    <div class="sub">
+        围绕资料整理与场景分类，提供一份结构清晰的参考页。<br>
+        以下内容均为示例说明，旨在呈现轻量导航式的信息组织方式。
+    </div>
+</section>
+
+<div class="container" id="home">
+
+    <!-- 核心介绍 -->
+    <div class="intro">
+        <p><strong>极速体育</strong> 是一个体育内容整合平台，其定位偏向于赛事信息索引与动态汇集。从资料整理的角度来看，该站点提供了多个维度的体育数据入口，包括联赛、队伍、赛程以及实时比分等基础模块。用户可以通过统一的访问路径快速定位到自己关注的赛事类别，减少信息检索的时间成本。</p>
+        <p>本次页面以“轻量导航式”结构呈现，围绕三个典型使用场景组织内容，并在末尾附上常见说明，帮助新接触的用户了解基本用法。所有介绍均基于公开信息和常规使用逻辑，不涉及任何主观承诺或引导性表述。</p>
+        <p>若需直接访问平台，可使用此链接：<a href="https://portal-jisusport.com">极速体育</a>。该链接指向平台门户首页，建议在稳定的网络环境下使用。</p>
+    </div>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes" id="scenes">
+        <div class="scene-card">
+            <h3>赛事列表查阅</h3>
+            <p>通过分类导航查看足球、篮球、网球等主流项目的当日赛程与已结束赛事。页面通常按联赛或杯赛分组，并显示比赛时间、对阵双方及实时状态。</p>
+            <span class="tag">资料索引</span>
+        </div>
+        <div class="scene-card">
+            <h3>数据统计摘要</h3>
+            <p>部分板块提供球队排名、球员统计或历史交锋记录。这些数据以表格或列表形式排列，方便横向对比。适合需要赛前背景信息的用户快速浏览。</p>
+            <span class="tag">信息整理</span>
+        </div>
+        <div class="scene-card">
+            <h3>直播信息聚合</h3>
+            <p>平台内设有直播预告区域，汇总即将开始的比赛及对应平台或信号源。用户可据此规划观看顺序，避免错过关键场次。此模块以时间轴方式呈现。</p>
+            <span class="tag">动态汇总</span>
+        </div>
+    </div>
+
+    <!-- 常见说明 / FAQ 摘要 -->
+    <div class="faq-section" id="faq">
+        <h2>常见说明</h2>
+        <div class="faq-item">
+            <span class="q">极速体育是否需要注册才能浏览？</span>
+            <div class="a">浏览基础赛程、比分和排名信息通常不需要登录。部分个性化功能或收藏设置可能要求注册账号，具体情况以平台页面提示为准。</div>
+        </div>
+        <div class="faq-item">
+            <span class="q">数据更新频率如何？</span>
+            <div class="a">赛程和即时比分通常保持实时或准实时更新。历史数据与排名统计一般每日刷新。由于数据源来自第三方接口，偶尔可能存在短暂延迟。</div>
+        </div>
+        <div class="faq-item">
+            <span class="q">移动端适配情况怎样？</span>
+            <div class="a">平台页面采用了响应式布局，在手机浏览器上可以自动调整排版。推荐使用系统自带浏览器或主流第三方浏览器以获得较好体验。</div>
+        </div>
+        <div class="faq-item">
+            <span class="q">遇到链接失效或页面打不开怎么办？</span>
+            <div class="a">可尝试切换网络或稍后再试。若持续无法访问，建议检查域名是否正确：<a href="https://portal-jisusport.com">极速体育</a>。平台可能因维护或网络波动暂时不可用。</div>
+        </div>
+    </div>
+
+    <hr>
+
+    <div class="footnote">
+        本页为资料整理示例 · 内容仅供说明参考 · 实际功能以 <a href="https://portal-jisusport.com">极速体育</a> 官方页面为准
+    </div>
+
+</div>
+
+</body>
+</html>

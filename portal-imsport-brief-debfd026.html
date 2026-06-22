@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>im体育 · 资料索引与信息组织</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-color: #f5f7fa;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #1e293b;
+        }
+        a {
+            text-decoration: none;
+        }
+        a:link, a:visited {
+            color: #2a6f97;
+            border-bottom: 1px dotted #b6d0e2;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        a:hover, a:active {
+            color: #01497c;
+            border-bottom-color: #01497c;
+        }
+
+        /* ===== Hero 深色区域 ===== */
+        .hero {
+            background: linear-gradient(145deg, #0f172a 0%, #1e293b 50%, #0b1a2e 100%);
+            color: #e2e8f0;
+            padding: 6rem 2rem 4.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -10%;
+            bottom: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(42,111,151,0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-content {
+            max-width: 880px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(135deg, #e0f2fe, #b9e0f7);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 1.8rem;
+            color: #94a3b8;
+            line-height: 1.7;
+        }
+        .hero-tagline {
+            display: inline-block;
+            background: rgba(42,111,151,0.25);
+            border: 1px solid rgba(42,111,151,0.4);
+            padding: 0.4rem 1.4rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #b6d0e2;
+        }
+
+        /* ===== 通用板块 ===== */
+        .section {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            color: #0f172a;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: #475569;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+        }
+
+        /* ===== 优势区 · 卡片 ===== */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+        .advantage-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03), 0 1px 4px rgba(0,0,0,0.04);
+            transition: transform 0.2s, box-shadow 0.25s;
+            border: 1px solid #f0f2f5;
+        }
+        .advantage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(15,23,42,0.06);
+        }
+        .advantage-card h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #0f172a;
+        }
+        .advantage-card p {
+            font-size: 0.95rem;
+            color: #3f506e;
+        }
+        .card-icon {
+            display: inline-block;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            background: #eef6fc;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 14px;
+            color: #2a6f97;
+        }
+
+        /* ===== 说明区（信息索引角度） ===== */
+        .info-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2.5rem 2.8rem;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.02);
+            border: 1px solid #e9edf2;
+        }
+        .info-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+        }
+        .info-block strong {
+            font-weight: 500;
+            color: #0b1a2e;
+        }
+        .info-block .highlight-link {
+            background: #eef6fc;
+            padding: 0.15rem 0.3rem;
+            border-radius: 6px;
+        }
+
+        /* ===== FAQ 摘要 ===== */
+        .faq-mini {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+        }
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 1rem;
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        .faq-q {
+            font-weight: 500;
+            font-size: 1.08rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+        .faq-a {
+            font-size: 0.95rem;
+            color: #475569;
+        }
+
+        /* ===== 底部链接区 ===== */
+        .footer-links {
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            padding: 2.5rem 2rem 3rem;
+            text-align: center;
+        }
+        .footer-links-inner {
+            max-width: 880px;
+            margin: 0 auto;
+        }
+        .footer-links p {
+            color: #475569;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .footer-links a {
+            margin: 0 0.2rem;
+        }
+
+        /* ===== 响应式 ===== */
+        @media (max-width: 640px) {
+            .hero { padding: 4rem 1.5rem 3rem; }
+            .hero h1 { font-size: 2.1rem; }
+            .hero p { font-size: 1rem; }
+            .section { padding: 2.5rem 1.2rem; }
+            .section-title { font-size: 1.6rem; }
+            .info-block { padding: 1.8rem 1.2rem; }
+            .advantage-grid { gap: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- hero 区 -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-tagline">资料整理 · 信息索引</span>
+            <h1>体育资讯的结构化梳理<br>从数据到参考</h1>
+            <p>围绕赛事信息、选手档案、历史记录，建立可检索的参考框架。以 <a href="https://portal-imsport.com" style="border-bottom: 1px solid rgba(42,111,151,0.6); color: #b9e0f7;">im体育</a> 为索引基点，延伸信息组织方式。</p>
+        </div>
+    </section>
+
+    <!-- 优势区 -->
+    <section class="section">
+        <h2 class="section-title">信息组织中的几个支点</h2>
+        <p class="section-desc">在体育信息生态中，资料索引的颗粒度与关联方式，直接影响参考效率。以下维度是常用切入角度。</p>
+        <div class="advantage-grid">
+            <div class="advantage-card">
+                <div class="card-icon">📋</div>
+                <h3>赛事档案化</h3>
+                <p>按赛季、联赛、杯赛归档，保留赛程、比分、阵容变动，便于横向对比和历史回溯。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="card-icon">🧩</div>
+                <h3>多维标签关联</h3>
+                <p>为每场比赛、每位选手标记技术特征、场地习惯、关键事件，形成可交叉检索的标签网络。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="card-icon">📊</div>
+                <h3>统计基线建立</h3>
+                <p>汇总控球率、射门分布、跑动距离等常见指标，构建标准化统计池，减少信息碎片化。</p>
+            </div>
+            <div class="advantage-card">
+                <div class="card-icon">🔗</div>
+                <h3>源头链接留存</h3>
+                <p>每条记录保留原始链接或出处，便于回溯核实。例如通过 <a href="https://portal-imsport.com">im体育</a> 进行信息锚定。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 说明区：从资料整理角度展开 -->
+    <section class="section">
+        <h2 class="section-title">从索引到参考：一种工作方式</h2>
+        <div class="info-block">
+            <p>体育信息的价值往往不在于单一数据，而在于数据之间的关联方式。以某次联赛为例，若仅记录比分，则丢失了阵容轮换、伤病情况、天气影响等变量。因此，更完整的做法是将每轮比赛视为一个信息节点，关联选手状态、历史交锋、教练战术笔记等上下文。</p>
+            <p>在实际操作中，我们常以 <strong>portal-imsport.com</strong> 作为信息锚点之一。其结构化的赛事列表、选手资料页面，可以作为外部参考源，补充到本地索引中。例如在整理某俱乐部近年欧战记录时，将 <a href="https://portal-imsport.com">im体育</a> 上的赛程与本地数据交叉比对，能发现记录中的缺漏或偏差。</p>
+            <p>另一种常见场景是快速检索：当需要查找某位选手在特定场地上的表现时，借助标签筛选与来源链接，可以在几个层级内定位到相关场次。这种方法的优势在于——信息不是孤立的条目，而是可追溯、可验证的参考链。</p>
+            <p style="margin-bottom: 0.4rem;">当然，任何索引系统都有边界。资料的完整性取决于原始来源的规范程度与更新频率。保持对信息源头的审视，是资料工作者持续面对的基本课题。以 <a href="https://portal-imsport.com">im体育</a> 为例，其页面结构较为规整，适合作为字段提取的测试对象。</p>
+        </div>
+    </section>
+
+    <!-- FAQ 摘要 -->
+    <section class="section" style="padding-top: 0;">
+        <h2 class="section-title" style="margin-bottom: 1.2rem;">常见疑问摘要</h2>
+        <div class="faq-mini">
+            <div class="faq-item">
+                <div class="faq-q">信息索引时，如何处理来源不一致的记录？</div>
+                <div class="faq-a">优先采用多源交叉验证。若仍存在差异，保留两条记录并标注来源，如一方来自 <a href="https://portal-imsport.com">im体育</a>，另一方来自其他体育数据库，供后续判断。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">索引的结构应该多深？</div>
+                <div class="faq-a">建议以「赛事 → 场次 → 选手/事件」三层为基础，再根据需求添加标签层与链接层。深度适中，既不过度扁平，也不过度嵌套。</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-q">能否直接用现成页面作为索引源？</div>
+                <div class="faq-a">可以，但需注意页面结构变化风险。例如从 <a href="https://portal-imsport.com">im体育</a> 中提取数据时，应定期检查字段是否更新，并保留原始页面截图或快照。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部链接区 -->
+    <footer class="footer-links">
+        <div class="footer-links-inner">
+            <p>资料索引 · 信息整理 · 参考框架</p>
+            <p>以 <a href="https://portal-imsport.com">im体育</a> 作为信息锚点之一，持续完善体育资料的组织方式。</p>
+            <p style="margin-top: 1rem; font-size: 0.85rem; color: #64748b;">页面信息仅供研究参考，不构成任何引导或建议。</p>
+        </div>
+    </footer>
+
+</body>
+</html>
